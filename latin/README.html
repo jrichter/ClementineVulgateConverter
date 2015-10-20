@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Clementine Vulgate Project: markup</title>
+  </head>
+  <body>
+        <h2>
+          The Clementine Vulgate: plain text
+        </h2>
+
+	<h3>Introduction</h3>
+        <p>This page is for those who want to convert the <a href="http://vulsearch.sourceforge.net/">text of the Clementine
+          Vulgate</a> into a format of their choosing.
+	</p>
+
+	<h3>Description of the markup</h3>
+	<p>The text is plain text, codepage 1252, with DOS-style line endings.
+	Commas and periods have no space before, and a single space after
+	(unless they end a line&mdash;there is never a space at the end of a
+	verse), whereas <code>: ; ? !</code> each have a single space before, and a single
+	space after (unless they end a line). In general, the first word of a
+	verse is not capitalized, nor the first word of a line of poetry, but
+	the first word of a sentence, as well as the first word of direct speech
+	or quotation, is capitalized.</p>
+
+	<p>The text really has two structures: the traditional division
+	into books, chapters and verses, and a 'natural' structure as sentences
+	and paragraphs. This latter structure is not an intrinsic part of the
+	text, and has been imposed differently by each editor of the Vulgate
+	through the centuries; for my part I have tried to use punctuation both
+	to make the meaning transparent, and to reflect the natural
+	cadences in the text.</p>
+	<ul>
+	  <li>Paragraph divisions are indicated by a backslash <code>\</code>, though this is
+	  omitted at the very start or end of a chapter. This is followed by a
+	  space if it should occur in the middle of a verse.</li>
+	  <li>When text is set as verse, the start and end of a section of verse are
+	  indicated by brackets <code>[</code> (preceded by a space) and
+	  <code>]</code> (followed by a space unless it end
+	  the verse) respectively. Line breaks within the verse are indicated by
+	  a slash <code>/</code> (followed by a space unless it end the verse).</li>
+	  <li>When different speakers are indicated (e.g.&nbsp;in the
+	  Lamentations), the speaker's name is placed between angle brackets
+	  <code>&lt;&hellip;&gt;</code>, with no space after the closing bracket.</li>
+	  <li>Lamentations and Ecclesiasticus have prologues (which I believe
+	  are non-canonical?). In the source,
+	  this appears at the start of 1:1, though logically it belongs before
+	  the start of ch.&nbsp;1. The prologue is preceded by
+	  <code>&lt;Prologus&gt;</code> and in both books the text of
+	  verse&nbsp;1 begins at the first bracket <code>[</code>.</li>
+	  <li>Information on the creators and proof-readers of each book can be
+	  found in <code>source/data.txt</code>; a description of the format of
+	  this file appears at its head.</li>
+	</ul>
+
+	<h3>Example script: makehtml.sed</h3>
+	<p>This is a sed script that does the meat of the work: it converts the
+	  source files to the body of a valid XHTML document. It should be an
+	  easy matter to modify this script to produce XML with whatever tags
+	  you want.
+          </p>
+</body>
+</html>
