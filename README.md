@@ -6,6 +6,6 @@ The files in the latin directory are downloaded from: http://vulsearch.sourcefor
 The text has been released into the public domain. Those
 who use it are requested to acknowledge their source, report typographical
 errors to the project maintainer, and make clear any modifications they make,
-but these are only requests that are not enforced by any licence.
+but these are only requests that are not enforced by any license.
 
-The rest of this repo is Copyright Justin Richter under the MIT licence.
+The rest of this repo is Copyright Justin Richter under the MIT license.
