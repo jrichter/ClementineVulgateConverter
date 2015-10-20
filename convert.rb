@@ -80,9 +80,7 @@ BOOKS = {
 builder = Builder::XmlMarkup.new
 builder.instruct!(:xml, version: '1.0', encoding: 'UTF-8')
 
-verses = {}
-
-Dir['*.lat'].to_a.sort.each do |filename|
+Dir['latin/*.lat'].to_a.sort.each do |filename|
   next if filename =~~ /.*\.lat/
   file = File.open(filename, 'r')
   book = Books[File.basename(filename, '.lat')]
