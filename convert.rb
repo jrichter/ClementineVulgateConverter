@@ -79,13 +79,20 @@ class LatinConverter
            'Apc'   => ['REV','Apocalypsis']
           }
 
+  def self.build_xml_file
+    v = build_verses_hash
+    xml = build_xml(v)
+    file = File.open('clementine-vulgate.usfx.xml', 'w')
+    file.write xml
+    file.close
+  end
+
   def self.build_verses_hash
     verses = {}
     Dir['latin/*.lat'].to_a.sort.each do |filename|
       if filename =~ /.*\.lat/
         file = File.open(filename, 'r')
         name = File.basename(filename, '.lat')
-        puts name
         bid = BOOKS[name][0]
         verses[bid] ||= {}
         file.readlines.each do |line|
@@ -97,14 +104,32 @@ class LatinConverter
           verses[bid][cn] ||= {}
           verses[bid][cn][vn] = line.strip
         end
+        file.close
       end
-      return verses
     end
+    return verses
   end
 
   def self.build_xml(verses)
     builder = Builder::XmlMarkup.new
     builder.instruct!(:xml, version: '1.0', encoding: 'UTF-8')
+    xml = builder.usfx('xmlns:xsi' => 'http://eBible.org/usfx.xsd', 'xsi:noNamespaceSchemaLocation' => 'usfx.xsd') do |usfx|
+      BOOKS.each do |f, bid|
+        usfx.book(id: bid[0]) do |book|
+          book.h(bid[1])
+          chapters = verses[bid[0]]
+          chapters.each do |cn, verses|
+            book.c(id: cn)
+            verses.each do |vn, text|
+              book.v(id: vn)
+              book << text
+              book.ve
+            end
+          end
+        end
+      end
+    end
+    return xml
   end
 
 end
