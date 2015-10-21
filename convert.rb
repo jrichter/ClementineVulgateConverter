@@ -99,6 +99,8 @@ class LatinConverter
           # The original file has codepage 1252 encoding
           # Lets get rid of that
           line.force_encoding('windows-1252').encode!('utf-8')
+          # Get rid of annoying characters
+          line.gsub!(/[<\/\\\[\]]*/,'').gsub!(/>/,' ')
           # Get chapter and verse number
           cn, vn = line.slice!(/\d+:\d+/).split(':')
           verses[bid][cn] ||= {}
