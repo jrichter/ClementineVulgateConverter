@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require ('builder')
+require('builder')
 
 class LatinConverter
 
