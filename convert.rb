@@ -82,7 +82,7 @@ class LatinConverter
   def self.build_xml_file
     v = build_verses_hash
     xml = build_xml(v)
-    file = File.open('clementine-vulgate.usfx.xml', 'w')
+    file = File.open('lat-clementine-vul.usfx.xml', 'w')
     file.write xml
     file.close
   end
