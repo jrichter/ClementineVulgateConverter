@@ -104,7 +104,7 @@ class LatinConverter
           # Get chapter and verse number
           cn, vn = line.slice!(/\d+:\d+/).split(':')
           verses[bid][cn] ||= {}
-          verses[bid][cn][vn] = line.strip
+          verses[bid][cn][vn] = line.rstrip
         end
         file.close
       end
